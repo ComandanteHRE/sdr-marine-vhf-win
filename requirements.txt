@@ -1,0 +1,4 @@
+# Версии подобраны под Python 3.8 (последний Python, который работает в Windows 7)
+numpy==1.24.4
+sounddevice==0.4.6
+lameenc>=1.5,<1.8
