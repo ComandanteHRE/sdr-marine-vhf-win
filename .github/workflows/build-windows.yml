@@ -2,6 +2,7 @@ name: Build Windows (portable exe, Windows 7+)
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     tags: ["v*"]
 jobs:
   build:
