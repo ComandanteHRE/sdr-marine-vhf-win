@@ -1,0 +1,52 @@
+name: Build Windows (portable exe, Windows 7+)
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"       # последний Python с поддержкой Windows 7
+          architecture: x64
+      - name: RTL-SDR DLL (MSYS2)
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          install: mingw-w64-x86_64-rtl-sdr
+          update: false
+      - name: Collect DLLs
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dlls | Out-Null
+          $bin = "C:\msys64\mingw64\bin"
+          foreach ($n in "librtlsdr.dll","libusb-1.0.dll","libwinpthread-1.dll") {
+            if (Test-Path "$bin\$n") { Copy-Item "$bin\$n" dlls\ } else { Write-Host "нет $n" }
+          }
+          if (-not (Test-Path dlls\librtlsdr.dll)) { throw "librtlsdr.dll не найдена" }
+          Get-ChildItem dlls
+      - name: Install
+        run: |
+          python -m pip install --upgrade "pip<25"
+          pip install -r requirements-build.txt
+      - name: Self-test
+        run: python selftest.py
+      - name: PyInstaller
+        run: >
+          pyinstaller --noconfirm --clean --windowed --name MarineVHF --icon app.ico
+          --collect-all sounddevice --hidden-import lameenc
+          --exclude-module matplotlib --exclude-module pandas --exclude-module IPython --exclude-module pytest
+          --exclude-module scipy --exclude-module PIL app.py
+      - name: Package
+        shell: pwsh
+        run: |
+          Copy-Item dlls\*.dll dist\MarineVHF\
+          Copy-Item README.md, OpenCPN_start.bat, "OpenCPN.txt" dist\MarineVHF\
+          Compress-Archive -Path dist\MarineVHF -DestinationPath MarineVHF-win7plus-x64.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MarineVHF-win7plus-x64
+          path: MarineVHF-win7plus-x64.zip

@@ -28,6 +28,6 @@ pyinstaller --noconfirm --clean --windowed --name MarineVHF --icon app.ico ^
 copy /y dlls\*.dll dist\MarineVHF\ >nul
 copy /y README.md dist\MarineVHF\ >nul
 copy /y OpenCPN_start.bat dist\MarineVHF\ >nul
-copy /y "OpenCPN-подключение.txt" dist\MarineVHF\ >nul
+copy /y "OpenCPN.txt" dist\MarineVHF\ >nul
 echo.
 echo Готово: dist\MarineVHF\MarineVHF.exe  ^(папку можно копировать целиком, например на флешку^)
