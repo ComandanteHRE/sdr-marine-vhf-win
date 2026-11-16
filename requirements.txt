@@ -1,4 +1,4 @@
-# Версии подобраны под Python 3.8 (последний Python, который работает в Windows 7)
+# Pinned for Python 3.8 (last Python supporting Windows 7)
 numpy==1.24.4
 sounddevice==0.4.6
 lameenc>=1.5,<1.8
