@@ -1,0 +1,190 @@
+Collecting pip<25
+  Downloading pip-24.3.1-py3-none-any.whl.metadata (3.7 kB)
+Downloading pip-24.3.1-py3-none-any.whl (1.8 MB)
+   ---------------------------------------- 1.8/1.8 MB 33.2 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.0.1
+    Uninstalling pip-25.0.1:
+      Successfully uninstalled pip-25.0.1
+Successfully installed pip-24.3.1
+Collecting numpy==1.24.4 (from -r D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\requirements.txt (line 2))
+  Downloading numpy-1.24.4-cp38-cp38-win32.whl.metadata (5.6 kB)
+Collecting sounddevice==0.4.6 (from -r D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\requirements.txt (line 3))
+  Downloading sounddevice-0.4.6-py3-none-win32.whl.metadata (1.4 kB)
+Collecting lameenc<1.8,>=1.5 (from -r D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\requirements.txt (line 4))
+  Downloading lameenc-1.7.0-cp38-cp38-win32.whl.metadata (825 bytes)
+Collecting pyinstaller==5.13.2 (from -r requirements-build.txt (line 2))
+  Downloading pyinstaller-5.13.2-py3-none-win32.whl.metadata (8.3 kB)
+Collecting CFFI>=1.0 (from sounddevice==0.4.6->-r D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\requirements.txt (line 3))
+  Downloading cffi-1.17.1-cp38-cp38-win32.whl.metadata (1.6 kB)
+Requirement already satisfied: setuptools>=42.0.0 in c:\hostedtoolcache\windows\python\3.8.10\x86\lib\site-packages (from pyinstaller==5.13.2->-r requirements-build.txt (line 2)) (56.0.0)
+Collecting altgraph (from pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading altgraph-0.17.5-py2.py3-none-any.whl.metadata (7.5 kB)
+Collecting pyinstaller-hooks-contrib>=2021.4 (from pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading pyinstaller_hooks_contrib-2026.10-py3-none-any.whl.metadata (16 kB)
+Collecting pefile>=2022.5.30 (from pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading pefile-2024.8.26-py3-none-any.whl.metadata (1.4 kB)
+Collecting pywin32-ctypes>=0.2.1 (from pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading pywin32_ctypes-0.2.3-py3-none-any.whl.metadata (3.9 kB)
+Collecting pycparser (from CFFI>=1.0->sounddevice==0.4.6->-r D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\requirements.txt (line 3))
+  Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Collecting importlib_metadata>=4.6 (from pyinstaller-hooks-contrib>=2021.4->pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading importlib_metadata-8.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting packaging>=22.0 (from pyinstaller-hooks-contrib>=2021.4->pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting zipp>=3.20 (from importlib_metadata>=4.6->pyinstaller-hooks-contrib>=2021.4->pyinstaller==5.13.2->-r requirements-build.txt (line 2))
+  Downloading zipp-3.20.2-py3-none-any.whl.metadata (3.7 kB)
+Downloading numpy-1.24.4-cp38-cp38-win32.whl (12.5 MB)
+   ---------------------------------------- 12.5/12.5 MB 52.1 MB/s eta 0:00:00
+Downloading sounddevice-0.4.6-py3-none-win32.whl (197 kB)
+Downloading pyinstaller-5.13.2-py3-none-win32.whl (1.2 MB)
+   ---------------------------------------- 1.2/1.2 MB 30.8 MB/s eta 0:00:00
+Downloading lameenc-1.7.0-cp38-cp38-win32.whl (122 kB)
+Downloading cffi-1.17.1-cp38-cp38-win32.whl (171 kB)
+Downloading pefile-2024.8.26-py3-none-any.whl (74 kB)
+Downloading pyinstaller_hooks_contrib-2026.10-py3-none-any.whl (463 kB)
+Downloading pywin32_ctypes-0.2.3-py3-none-any.whl (30 kB)
+Downloading altgraph-0.17.5-py2.py3-none-any.whl (21 kB)
+Downloading importlib_metadata-8.5.0-py3-none-any.whl (26 kB)
+Downloading packaging-26.2-py3-none-any.whl (100 kB)
+Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+Downloading zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Installing collected packages: lameenc, altgraph, zipp, pywin32-ctypes, pycparser, pefile, packaging, numpy, importlib_metadata, CFFI, sounddevice, pyinstaller-hooks-contrib, pyinstaller
+Successfully installed CFFI-1.17.1 altgraph-0.17.5 importlib_metadata-8.5.0 lameenc-1.7.0 numpy-1.24.4 packaging-26.2 pefile-2024.8.26 pycparser-2.23 pyinstaller-5.13.2 pyinstaller-hooks-contrib-2026.10 pywin32-ctypes-0.2.3 sounddevice-0.4.6 zipp-3.20.2
+
+[notice] A new release of pip is available: 24.3.1 -> 25.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+[[32mOK[0m] канал 16 = 156.800 
+[[32mOK[0m] канал 70 = 156.525 
+[[32mOK[0m] канал 1 береговая 160.650 
+[[32mOK[0m] канал 88 = 157.425 
+[[32mOK[0m] ▲ с 28 -> 60, ▼ с 1 -> 88 
+[[32mOK[0m] панель: ввод канала, ▲, ввод частоты (кГц), кнопка 16 
+[[32mOK[0m] NMEA из примера gpsd (контрольная сумма 5C) !AIVDM,1,1,,B,177KQJ5000G?tO`K>RA1wUbN0TKH,0*5C
+[[32mOK[0m] шумоподавитель открывается на канале 16 (открыт 33/65 блоков)
+[[32mOK[0m] демодулированный тон 900 Гц (пик 900 Гц)
+[[32mOK[0m] обзор находит каналы 16, 12, 6 и береговой 22 (16 циклов; найдено ['(12, True)', '(16, True)', '(22, False)', '(6, True)'])
+[[32mOK[0m] ложных срабатываний нет 
+[[32mOK[0m] АИС декодирует типы 1, 5, 18 (всего 15 сообщений)
+[[32mOK[0m] TCP: строки NMEA с верной контрольной суммой (20 строк)
+[[32mOK[0m] UDP: те же строки пришли датаграммами (20)
+[[32mOK[0m] тип 5: название судна разобрано и разбит на 2 фрагмента (DEMO ROTTERDAM)
+[[32mOK[0m] MP3-файл записан (16320 байт, ? с)
+[[32mOK[0m] раскладка 340x480 (вертик.): 20 кнопок в рамках, без наложений, попадание мышью []
+[[32mOK[0m] раскладка 420x760 (вертик.): 20 кнопок в рамках, без наложений, попадание мышью []
+[[32mOK[0m] раскладка 560x900 (вертик.): 20 кнопок в рамках, без наложений, попадание мышью []
+[[32mOK[0m] раскладка 1000x1000 (вертик.): 20 кнопок в рамках, без наложений, попадание мышью []
+[[32mOK[0m] раскладка 1100x700 (гориз.): 20 кнопок в рамках, без наложений, попадание мышью []
+[[32mOK[0m] раскладка 700x420 (гориз.): 20 кнопок в рамках, без наложений, попадание мышью []
+[[32mOK[0m] раскладка 1600x900 (гориз.): 20 кнопок в рамках, без наложений, попадание мышью []
+[пропуск] scipy не установлен — сравнение фильтров со scipy не выполняется
+
+ИТОГ: всё в порядке
+457 INFO: PyInstaller: 5.13.2
+459 INFO: Python: 3.8.10
+473 INFO: Platform: Windows-10-10.0.26100-SP0
+474 INFO: wrote D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\MarineVHF.spec
+483 INFO: Removing temporary files and cleaning cache in C:\Users\runneradmin\AppData\Local\pyinstaller
+484 WARNING: collect_data_files - skipping data collection for module 'sounddevice' as it is not a package.
+485 WARNING: collect_dynamic_libs - skipping library collection for module 'sounddevice' as it is not a package.
+616 INFO: Determining a mapping of distributions to packages...
+2637 INFO: Packages required by sounddevice:
+['cffi']
+2637 INFO: Extending PYTHONPATH with paths
+['D:\\a\\sdr-marine-vhf-win\\sdr-marine-vhf-win']
+3117 INFO: Appending 'datas' from .spec
+3119 INFO: checking Analysis
+3119 INFO: Building Analysis because Analysis-00.toc is non existent
+3119 INFO: Initializing module dependency graph...
+3122 INFO: Caching module graph hooks...
+3146 INFO: Analyzing base_library.zip ...
+4422 INFO: Loading module hook 'hook-heapq.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+4629 INFO: Loading module hook 'hook-encodings.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+5811 INFO: Loading module hook 'hook-pickle.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+6919 INFO: Caching module dependency graph...
+7083 INFO: running Analysis Analysis-00.toc
+7109 INFO: Adding Microsoft.Windows.Common-Controls to dependent assemblies of final executable
+  required by C:\hostedtoolcache\windows\Python\3.8.10\x86\python.exe
+7588 INFO: Analyzing D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\app.py
+7838 INFO: Loading module hook 'hook-numpy.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\Lib\\site-packages\\numpy\\_pyinstaller'...
+8673 INFO: Loading module hook 'hook-multiprocessing.util.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+8902 INFO: Loading module hook 'hook-xml.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+9488 INFO: Loading module hook 'hook-difflib.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+9596 INFO: Loading module hook 'hook-platform.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+9837 INFO: Loading module hook 'hook-sysconfig.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+10882 INFO: Loading module hook 'hook-sounddevice.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'...
+11003 INFO: Analyzing hidden import 'cffi'
+11096 INFO: Loading module hook 'hook-pycparser.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'...
+11672 INFO: Loading module hook 'hook-setuptools.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+12347 INFO: Processing pre-safe import module hook distutils from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module\\hook-distutils.py'.
+12347 INFO: Processing pre-find module path hook distutils from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path\\hook-distutils.py'.
+12358 INFO: Loading module hook 'hook-distutils.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+12413 INFO: Loading module hook 'hook-distutils.util.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+12631 INFO: Loading module hook 'hook-pkg_resources.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+14171 INFO: Processing module hooks...
+14197 INFO: Processing pre-safe import module hook win32com from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\_pyinstaller_hooks_contrib\\pre_safe_import_module\\hook-win32com.py'.
+14477 INFO: Loading module hook 'hook-packaging.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+14735 INFO: Loading module hook 'hook-setuptools.msvc.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+15000 INFO: Loading module hook 'hook-_tkinter.py' from 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks'...
+15000 INFO: checking Tree
+15002 INFO: Building Tree because Tree-00.toc is non existent
+15002 INFO: Building Tree Tree-00.toc
+15070 INFO: checking Tree
+15070 INFO: Building Tree because Tree-01.toc is non existent
+15070 INFO: Building Tree Tree-01.toc
+15080 INFO: checking Tree
+15080 INFO: Building Tree because Tree-02.toc is non existent
+15080 INFO: Building Tree Tree-02.toc
+15134 INFO: Looking for ctypes DLLs
+15185 INFO: Analyzing run-time hooks ...
+15189 INFO: Including run-time hook 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py'
+15193 INFO: Including run-time hook 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py'
+15195 INFO: Including run-time hook 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py'
+15199 INFO: Including run-time hook 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py'
+15199 INFO: Including run-time hook 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py'
+15205 INFO: Including run-time hook 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py'
+15256 INFO: Looking for dynamic libraries
+C:\hostedtoolcache\windows\Python\3.8.10\x86\lib\site-packages\PyInstaller\building\build_main.py:167: UserWarning: The numpy.array_api submodule is still experimental. See NEP 47.
+  __import__(package)
+615 INFO: Extra DLL search directories (AddDllDirectory): ['C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\lib\\site-packages\\numpy\\.libs']
+615 INFO: Extra DLL search directories (PATH): ['C:\\Program Files\\PowerShell\\7', 'C:\\Users\\runneradmin\\AppData\\Roaming\\Python\\Python38\\Scripts', 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86\\Scripts', 'C:\\hostedtoolcache\\windows\\Python\\3.8.10\\x86', 'C:\\Program Files\\MongoDB\\Server\\7.0\\bin', 'C:\\vcpkg', 'C:\\tools\\zstd', 'C:\\hostedtoolcache\\windows\\stack\\3.11.1\\x64', 'C:\\cabal\\bin', 'C:\\\\ghcup\\bin', 'C:\\mingw64\\bin', 'C:\\Program Files\\dotnet', 'C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin', 'C:\\Program Files\\R\\R-4.6.2\\bin\\x64', 'C:\\SeleniumWebDrivers\\GeckoDriver', 'C:\\SeleniumWebDrivers\\EdgeDriver\\', 'C:\\SeleniumWebDrivers\\ChromeDriver', 'C:\\Program Files (x86)\\sbt\\bin', 'C:\\Program Files (x86)\\GitHub CLI', 'C:\\Program Files\\Git\\bin', 'C:\\Program Files (x86)\\pipx_bin', 'C:\\npm\\prefix', 'C:\\hostedtoolcache\\windows\\go\\1.24.13\\x64\\bin', 'C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\Scripts', 'C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64', 'C:\\hostedtoolcache\\windows\\Ruby\\3.3.13\\x64\\bin', 'C:\\Program Files\\OpenSSL\\bin', 'C:\\tools\\kotlinc\\bin', 'C:\\hostedtoolcache\\windows\\Java_Temurin-Hotspot_jdk\\17.0.21-9\\x64\\bin', 'C:\\Program Files\\ImageMagick-7.1.2-Q16-HDRI', 'C:\\Program Files\\Microsoft SDKs\\Azure\\CLI2\\wbin', 'C:\\ProgramData\\kind', 'C:\\ProgramData\\Chocolatey\\bin', 'C:\\Windows\\system32', 'C:\\Windows', 'C:\\Windows\\System32\\Wbem', 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\Windows\\System32\\OpenSSH\\', 'C:\\Program Files\\WSL\\', 'C:\\Program Files\\PowerShell\\7\\', 'C:\\Program Files\\Microsoft\\Web Platform Installer\\', 'C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\', 'C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\', 'C:\\Program Files\\dotnet\\', 'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\', 'C:\\Program Files (x86)\\WiX Toolset v3.14\\bin', 'C:\\Program Files\\Microsoft SQL Server\\130\\DTS\\Binn\\', 'C:\\Program Files\\Microsoft SQL Server\\140\\DTS\\Binn\\', 'C:\\Program Files\\Microsoft SQL Server\\150\\DTS\\Binn\\', 'C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\', 'C:\\Program Files\\Microsoft SQL Server\\170\\DTS\\Binn\\', 'C:\\ProgramData\\chocolatey\\lib\\pulumi\\tools\\Pulumi\\bin', 'C:\\Program Files\\CMake\\bin', 'C:\\Strawberry\\c\\bin', 'C:\\Strawberry\\perl\\site\\bin', 'C:\\Strawberry\\perl\\bin', 'C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.9.16\\bin', 'C:\\Program Files\\Microsoft Service Fabric\\bin\\Fabric\\Fabric.Code', 'C:\\Program Files\\Microsoft SDKs\\Service Fabric\\Tools\\ServiceFabricLocalClusterManager', 'C:\\Program Files\\LLVM\\bin', 'C:\\Program Files (x86)\\LLVM\\bin', 'C:\\Program Files\\nodejs\\', 'C:\\Program Files\\Git\\cmd', 'C:\\Program Files\\Git\\ucrt64\\bin', 'C:\\Program Files\\Git\\usr\\bin', 'C:\\Program Files\\GitHub CLI\\', 'c:\\tools\\php', 'C:\\Program Files (x86)\\sbt\\bin', 'C:\\Program Files\\Amazon\\AWSCLIV2\\', 'C:\\Program Files\\Amazon\\SessionManagerPlugin\\bin\\', 'C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\', 'C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\', 'C:\\Program Files\\mongosh\\', 'C:\\Users\\runneradmin\\.dotnet\\tools', 'C:\\Users\\runneradmin\\.cargo\\bin', 'C:\\Users\\runneradmin\\AppData\\Local\\Microsoft\\WindowsApps']
+20362 INFO: Looking for eggs
+20378 INFO: Using Python library C:\hostedtoolcache\windows\Python\3.8.10\x86\python38.dll
+20378 INFO: Found binding redirects: 
+[]
+20386 INFO: Warnings written to D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\build\MarineVHF\warn-MarineVHF.txt
+20479 INFO: Graph cross-reference written to D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\build\MarineVHF\xref-MarineVHF.html
+20533 INFO: checking PYZ
+20535 INFO: Building PYZ because PYZ-00.toc is non existent
+20535 INFO: Building PYZ (ZlibArchive) D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\build\MarineVHF\PYZ-00.pyz
+21515 INFO: Building PYZ (ZlibArchive) D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\build\MarineVHF\PYZ-00.pyz completed successfully.
+21533 INFO: checking PKG
+21533 INFO: Building PKG because PKG-00.toc is non existent
+21533 INFO: Building PKG (CArchive) MarineVHF.pkg
+21575 INFO: Building PKG (CArchive) MarineVHF.pkg completed successfully.
+21577 INFO: Bootloader C:\hostedtoolcache\windows\Python\3.8.10\x86\lib\site-packages\PyInstaller\bootloader\Windows-32bit-intel\runw.exe
+21577 INFO: checking EXE
+21577 INFO: Building EXE because EXE-00.toc is non existent
+21577 INFO: Building EXE from EXE-00.toc
+21577 INFO: Copying bootloader EXE to D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\build\MarineVHF\MarineVHF.exe.notanexecutable
+21579 INFO: Copying icon to EXE
+21581 INFO: Copying icons from ['D:\\a\\sdr-marine-vhf-win\\sdr-marine-vhf-win\\app.ico']
+21581 INFO: Writing RT_GROUP_ICON 0 resource with 90 bytes
+21581 INFO: Writing RT_ICON 1 resource with 838 bytes
+21581 INFO: Writing RT_ICON 2 resource with 2083 bytes
+21581 INFO: Writing RT_ICON 3 resource with 3224 bytes
+21581 INFO: Writing RT_ICON 4 resource with 4402 bytes
+21581 INFO: Writing RT_ICON 5 resource with 9403 bytes
+21581 INFO: Writing RT_ICON 6 resource with 18139 bytes
+21583 INFO: Copying 0 resources to EXE
+21583 INFO: Embedding manifest in EXE
+21585 INFO: Updating manifest in D:\a\sdr-marine-vhf-win\sdr-marine-vhf-win\build\MarineVHF\MarineVHF.exe.notanexecutable
+21585 INFO: Updating resource type 24 name 1 language 0
+21587 INFO: Appending PKG archive to EXE
+21589 INFO: Fixing EXE headers
+21662 INFO: Building EXE from EXE-00.toc completed successfully.
+21678 INFO: checking COLLECT
+21678 INFO: Building COLLECT because COLLECT-00.toc is non existent
+21678 INFO: Building COLLECT COLLECT-00.toc
+22401 INFO: Building COLLECT COLLECT-00.toc completed successfully.
