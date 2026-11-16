@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.8"       # последний Python с поддержкой Windows 7
-          architecture: x64
+          architecture: x86
       - name: RTL-SDR DLL (готовая Windows-сборка драйвера)
         shell: pwsh
         env:
@@ -36,8 +36,11 @@ jobs:
               Expand-Archive $zip -DestinationPath $dir -Force
               $all = Get-ChildItem $dir -Recurse -Include *.dll
               L "$u -> dll: $(($all | ForEach-Object { $_.FullName.Substring($PWD.Path.Length) }) -join ', ')"
-              $pick = $all | Where-Object { $_.Name -match '^(lib)?rtlsdr\.dll$' -and $_.FullName -match 'x64|w64|win64|64' } | Select-Object -First 1
+              $pick = $all | Where-Object { $_.Name -match '^(lib)?rtlsdr\.dll$' } | Select-Object -First 1
               if ($pick) {
+                $b = [IO.File]::ReadAllBytes($pick.FullName); $pe = [BitConverter]::ToInt32($b,0x3C); $mach = [BitConverter]::ToUInt16($b,$pe+4)
+                L ("{0}: machine=0x{1:x}" -f $pick.FullName, $mach)
+                if ($mach -ne 0x14c) { continue }
                 Copy-Item "$($pick.Directory.FullName)\*.dll" dlls\ -Force
               }
             } catch { L "$u : $($_.Exception.Message)" }
@@ -66,8 +69,8 @@ jobs:
         run: |
           Copy-Item dlls\*.dll dist\MarineVHF\
           Copy-Item README.md, OpenCPN_start.bat, "OpenCPN.txt" dist\MarineVHF\
-          Compress-Archive -Path dist\MarineVHF -DestinationPath MarineVHF-win7plus-x64.zip
+          Compress-Archive -Path dist\MarineVHF -DestinationPath MarineVHF-win7plus.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: MarineVHF-win7plus-x64
-          path: MarineVHF-win7plus-x64.zip
+          name: MarineVHF-win7plus
+          path: MarineVHF-win7plus.zip

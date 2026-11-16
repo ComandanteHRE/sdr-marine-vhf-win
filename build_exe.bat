@@ -2,15 +2,15 @@
 chcp 65001 >nul
 rem Сборка portable-версии MarineVHF (папка с exe). Запускать из папки проекта.
 rem Нужен Python 3.8 (64-бит) — это последний Python, работающий в Windows 7:  https://www.python.org/downloads/release/python-3810/
-rem Перед запуском положите в папку dlls\ файлы librtlsdr.dll, libusb-1.0.dll (и libwinpthread-1.dll, если есть) из x64-сборки rtl-sdr.
+rem Перед запуском положите в папку dlls\ файлы librtlsdr.dll, libusb-1.0.dll (и libwinpthread-1.dll, если есть) из 32-bit-сборки rtl-sdr.
 setlocal
 cd /d "%~dp0"
 if not exist dlls\rtlsdr.dll if not exist dlls\librtlsdr.dll (
-  echo Нет dlls\rtlsdr.dll - положите туда DLL из x64-сборки rtl-sdr ^(см. README^)
+  echo Нет dlls\rtlsdr.dll - положите туда DLL из 32-bit-сборки rtl-sdr ^(см. README^)
   exit /b 1
 )
 py -3.8 --version >nul 2>&1 || (
-  echo Не найден Python 3.8. Установите Python 3.8.10 x64 ^(галочка "py launcher"^) и запустите снова.
+  echo Не найден Python 3.8. Установите Python 3.8.10 (32-bit) ^(галочка "py launcher"^) и запустите снова.
   exit /b 1
 )
 if not exist .venv-build (

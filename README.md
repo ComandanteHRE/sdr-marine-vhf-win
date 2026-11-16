@@ -7,12 +7,12 @@
 ## Как получить exe (самый простой способ — GitHub Actions)
 1. Загрузите содержимое этой папки в новый репозиторий GitHub (как для Android-версии).
 2. Вкладка **Actions → Build Windows (portable exe, Windows 7+) → Run workflow**.
-3. Через ~10 минут скачайте артефакт **MarineVHF-win7plus-x64** (zip), распакуйте куда угодно — это portable-папка.
+3. Через ~10 минут скачайте артефакт **MarineVHF-win7plus** (zip), распакуйте куда угодно — это portable-папка.
    В ней уже лежат `librtlsdr.dll`, `libusb-1.0.dll`, PortAudio и всё остальное; ничего устанавливать не нужно.
 
 ## Сборка вручную на своём компьютере
-1. Установите **Python 3.8.10 x64** (последний Python для Windows 7), отметьте «py launcher».
-2. Положите в папку `dlls\` файлы `librtlsdr.dll`, `libusb-1.0.dll` (и `libwinpthread-1.dll`, если есть) из x64-сборки rtl-sdr.
+1. Установите **Python 3.8.10 (32-bit)** (последний Python для Windows 7), отметьте «py launcher».
+2. Положите в папку `dlls\` файлы `librtlsdr.dll`, `libusb-1.0.dll` (и `libwinpthread-1.dll`, если есть) из 32-bit-сборки rtl-sdr.
 3. Запустите `build_exe.bat` → `dist\MarineVHF\MarineVHF.exe`.
 
 ## Требования к Windows
