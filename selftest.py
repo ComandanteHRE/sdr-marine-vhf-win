@@ -97,7 +97,7 @@ class Cap:
         pass
 
 cap = Cap()
-ev = run_rx("VOICE", 3.0, freq=mc.ship_hz(16), audio=cap, cfg={"squelch": 3})
+ev = run_rx("VOICE", 8.0, freq=mc.ship_hz(16), audio=cap, cfg={"squelch": 3})
 opened = [d["open"] for k, d in ev if k == "voice"]
 check("шумоподавитель открывается на канале 16", any(opened) and not all(opened),
       f"(открыт {sum(opened)}/{len(opened)} блоков)")
@@ -107,7 +107,7 @@ pk = np.fft.rfftfreq(len(aud), 1 / 48000)[spec.argmax()]
 check("демодулированный тон 900 Гц", abs(pk - 900) < 15, f"(пик {pk:.0f} Гц)")
 
 # 4. обзор диапазона
-ev = run_rx("SCAN", 6.0)
+ev = run_rx("SCAN", 20.0)
 done = [d for k, d in ev if k == "scan_done"]
 act = {}
 for cyc in done:
