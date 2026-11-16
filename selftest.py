@@ -1,3 +1,8 @@
+import sys
+try:
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+except Exception:
+    pass
 """Самопроверка без железа: python selftest.py  (использует симулятор sim.py)."""
 import queue
 import socket
