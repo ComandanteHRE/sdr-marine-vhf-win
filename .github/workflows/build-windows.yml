@@ -18,39 +18,37 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          $ErrorActionPreference = "Continue"
           New-Item -ItemType Directory -Force dlls | Out-Null
-          # источники по очереди: RTL-SDR Blog (работает со всеми ключами, включая V3/V4), librtlsdr, osmocom
-          $sources = @(
-            @{ repo = "rtlsdrblog/rtl-sdr-blog"; pattern = "*.zip" },
-            @{ repo = "librtlsdr/librtlsdr";     pattern = "*64*.zip" },
-            @{ repo = "osmocom/rtl-sdr";         pattern = "*.zip" }
+          $log = New-Object System.Collections.Generic.List[string]
+          function L($m) { Write-Host $m; $log.Add([string]$m) }
+          $urls = @(
+            "https://github.com/rtlsdrblog/rtl-sdr-blog/releases/download/1.01/Release.zip",
+            "https://github.com/rtlsdrblog/rtl-sdr-blog/releases/download/1.0/Release.zip",
+            "https://ftp.osmocom.org/binaries/windows/rtl-sdr/rtl-sdr-release.zip"
           )
-          $done = $false
-          foreach ($s in $sources) {
-            if ($done) { break }
-            $dir = "dl_" + ($s.repo -replace "/", "_")
-            New-Item -ItemType Directory -Force $dir | Out-Null
-            Write-Host "== $($s.repo)"
-            gh release download --repo $s.repo --pattern $s.pattern --dir $dir 2>&1 | Write-Host
-            foreach ($z in Get-ChildItem $dir -Filter *.zip -ErrorAction SilentlyContinue) {
-              Expand-Archive $z.FullName -DestinationPath "$dir\x\$($z.BaseName)" -Force
-            }
-            $cands = Get-ChildItem "$dir\x" -Recurse -Include rtlsdr.dll, librtlsdr.dll -ErrorAction SilentlyContinue |
-                     Where-Object { $_.FullName -match "x64|w64|win64|64" }
-            $pick = $cands | Select-Object -First 1
-            if ($pick) {
-              Write-Host "найдена: $($pick.FullName)"
-              Copy-Item "$($pick.Directory.FullName)\*.dll" dlls\ -Force
-              if (-not (Test-Path dlls\libusb-1.0.dll)) {
-                $u = Get-ChildItem "$dir\x" -Recurse -Filter libusb-1.0.dll | Where-Object { $_.FullName -match "x64|w64|win64|64" } | Select-Object -First 1
-                if ($u) { Copy-Item $u.FullName dlls\ -Force }
+          $n = 0
+          foreach ($u in $urls) {
+            if ((Test-Path dlls\rtlsdr.dll) -or (Test-Path dlls\librtlsdr.dll)) { break }
+            $n++; $zip = "dl$n.zip"; $dir = "dl$n"
+            try {
+              Invoke-WebRequest $u -OutFile $zip -UseBasicParsing
+              Expand-Archive $zip -DestinationPath $dir -Force
+              $all = Get-ChildItem $dir -Recurse -Include *.dll
+              L "$u -> dll: $(($all | ForEach-Object { $_.FullName.Substring($PWD.Path.Length) }) -join ', ')"
+              $pick = $all | Where-Object { $_.Name -match '^(lib)?rtlsdr\.dll$' -and $_.FullName -match 'x64|w64|win64|64' } | Select-Object -First 1
+              if ($pick) {
+                Copy-Item "$($pick.Directory.FullName)\*.dll" dlls\ -Force
               }
-              $done = $true
-            }
+            } catch { L "$u : $($_.Exception.Message)" }
           }
-          Get-ChildItem dlls
-          if (-not ((Test-Path dlls\rtlsdr.dll) -or (Test-Path dlls\librtlsdr.dll))) { throw "Не удалось получить x64 DLL RTL-SDR ни из одного источника" }
-          if (-not (Test-Path dlls\libusb-1.0.dll)) { throw "Не найдена libusb-1.0.dll" }
+          Get-ChildItem dlls | ForEach-Object { L "dlls: $($_.Name)" }
+          if (-not ((Test-Path dlls\rtlsdr.dll) -or (Test-Path dlls\librtlsdr.dll))) {
+            $msg = ($log -join "%0A")
+            Write-Host "::error title=DLL::$msg"
+            exit 1
+          }
+          if (-not (Test-Path dlls\libusb-1.0.dll)) { Write-Host "::error title=DLL::libusb-1.0.dll не найдена. $($log -join '%0A')"; exit 1 }
       - name: Install
         run: |
           python -m pip install --upgrade "pip<25"
