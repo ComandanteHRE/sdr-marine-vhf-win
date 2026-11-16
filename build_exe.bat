@@ -5,8 +5,8 @@ rem Нужен Python 3.8 (64-бит) — это последний Python, ра
 rem Перед запуском положите в папку dlls\ файлы librtlsdr.dll, libusb-1.0.dll (и libwinpthread-1.dll, если есть) из x64-сборки rtl-sdr.
 setlocal
 cd /d "%~dp0"
-if not exist dlls\librtlsdr.dll (
-  echo Нет dlls\librtlsdr.dll - положите туда DLL из x64-сборки rtl-sdr ^(см. README^)
+if not exist dlls\rtlsdr.dll if not exist dlls\librtlsdr.dll (
+  echo Нет dlls\rtlsdr.dll - положите туда DLL из x64-сборки rtl-sdr ^(см. README^)
   exit /b 1
 )
 py -3.8 --version >nul 2>&1 || (

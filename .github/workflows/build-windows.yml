@@ -13,22 +13,44 @@ jobs:
         with:
           python-version: "3.8"       # последний Python с поддержкой Windows 7
           architecture: x64
-      - name: RTL-SDR DLL (MSYS2)
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          install: mingw-w64-x86_64-rtl-sdr
-          update: false
-      - name: Collect DLLs
+      - name: RTL-SDR DLL (готовая Windows-сборка драйвера)
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           New-Item -ItemType Directory -Force dlls | Out-Null
-          $bin = "C:\msys64\mingw64\bin"
-          foreach ($n in "librtlsdr.dll","libusb-1.0.dll","libwinpthread-1.dll") {
-            if (Test-Path "$bin\$n") { Copy-Item "$bin\$n" dlls\ } else { Write-Host "нет $n" }
+          # источники по очереди: RTL-SDR Blog (работает со всеми ключами, включая V3/V4), librtlsdr, osmocom
+          $sources = @(
+            @{ repo = "rtlsdrblog/rtl-sdr-blog"; pattern = "*.zip" },
+            @{ repo = "librtlsdr/librtlsdr";     pattern = "*64*.zip" },
+            @{ repo = "osmocom/rtl-sdr";         pattern = "*.zip" }
+          )
+          $done = $false
+          foreach ($s in $sources) {
+            if ($done) { break }
+            $dir = "dl_" + ($s.repo -replace "/", "_")
+            New-Item -ItemType Directory -Force $dir | Out-Null
+            Write-Host "== $($s.repo)"
+            gh release download --repo $s.repo --pattern $s.pattern --dir $dir 2>&1 | Write-Host
+            foreach ($z in Get-ChildItem $dir -Filter *.zip -ErrorAction SilentlyContinue) {
+              Expand-Archive $z.FullName -DestinationPath "$dir\x\$($z.BaseName)" -Force
+            }
+            $cands = Get-ChildItem "$dir\x" -Recurse -Include rtlsdr.dll, librtlsdr.dll -ErrorAction SilentlyContinue |
+                     Where-Object { $_.FullName -match "x64|w64|win64|64" }
+            $pick = $cands | Select-Object -First 1
+            if ($pick) {
+              Write-Host "найдена: $($pick.FullName)"
+              Copy-Item "$($pick.Directory.FullName)\*.dll" dlls\ -Force
+              if (-not (Test-Path dlls\libusb-1.0.dll)) {
+                $u = Get-ChildItem "$dir\x" -Recurse -Filter libusb-1.0.dll | Where-Object { $_.FullName -match "x64|w64|win64|64" } | Select-Object -First 1
+                if ($u) { Copy-Item $u.FullName dlls\ -Force }
+              }
+              $done = $true
+            }
           }
-          if (-not (Test-Path dlls\librtlsdr.dll)) { throw "librtlsdr.dll не найдена" }
           Get-ChildItem dlls
+          if (-not ((Test-Path dlls\rtlsdr.dll) -or (Test-Path dlls\librtlsdr.dll))) { throw "Не удалось получить x64 DLL RTL-SDR ни из одного источника" }
+          if (-not (Test-Path dlls\libusb-1.0.dll)) { throw "Не найдена libusb-1.0.dll" }
       - name: Install
         run: |
           python -m pip install --upgrade "pip<25"
